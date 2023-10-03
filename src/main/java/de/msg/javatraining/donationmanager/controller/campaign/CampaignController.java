@@ -12,6 +12,7 @@ import de.msg.javatraining.donationmanager.service.campaignService.CampaignServi
 import de.msg.javatraining.donationmanager.service.donationService.DonationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,14 +40,14 @@ public class CampaignController {
         try {
             Campaign camp = campaignService.createCampaign(userId, campaign.getName(), campaign.getPurpose());
             if (camp != null) {
-                return ResponseEntity.ok("");
+                return new ResponseEntity<>(camp, HttpStatusCode.valueOf(200));
             }
             return ResponseEntity.ok("Donation has not been created!");
         } catch (UserPermissionException
                  | UserNotFoundException
                  | CampaignNameException
                  | CampaignRequirementsException exception) {
-            return ResponseEntity.ok(exception.getMessage());
+            return new ResponseEntity<>(exception.getMessage(), HttpStatusCode.valueOf(200));
         }
 
 
@@ -59,7 +60,7 @@ public class CampaignController {
         try {
             Campaign camp = campaignService.updateCampaign(userId, campId, newCampaign.getName(), newCampaign.getPurpose());
             if (camp != null) {
-                return ResponseEntity.ok("");
+                return new ResponseEntity<>(camp, HttpStatusCode.valueOf(200));
             }
             return ResponseEntity.ok("Campaign has not been updated!");
         } catch (UserPermissionException
@@ -67,7 +68,7 @@ public class CampaignController {
                 | CampaignNameException
                 | CampaignNotFoundException
                 | CampaignRequirementsException exception) {
-            return ResponseEntity.ok(exception.getMessage());
+            return new ResponseEntity<>(exception.getMessage(), HttpStatusCode.valueOf(200));
         }
 
 
@@ -81,16 +82,18 @@ public class CampaignController {
             if (!donationService.findDonationsByCampaignId(campId)) {
                 Campaign camp = campaignService.deleteCampaignById(userId, campId);
                 if (camp != null) {
-                    return ResponseEntity.ok("");
+                    return new ResponseEntity<>(camp, HttpStatusCode.valueOf(200));
                 }
                 return ResponseEntity.ok("Campaign can't be deleted!");
             }
-            return ResponseEntity.ok("Deletion failed: Campaign has paid Donations!");
+//            return ResponseEntity.ok("Deletion failed: Campaign has paid Donations!");
+            return new ResponseEntity<>("Deletion failed: Campaign has paid Donations!", HttpStatusCode.valueOf(200));
+
         } catch (UserPermissionException
                  | CampaignIdException
                  | CampaignNotFoundException
                  | UserIdException exception) {
-            return ResponseEntity.ok(exception.getMessage());
+            return new ResponseEntity<>(exception.getMessage(), HttpStatusCode.valueOf(200));
         }
 
     }

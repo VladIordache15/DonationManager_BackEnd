@@ -79,11 +79,11 @@ public class DonorController {
         try {
             if (donationService.findDonationsByDonatorId(donatorId)) {
                 Donor updateValues = new Donor("UNKNOWN", "UNKNOWN", "UNKNOWN","UNKNOWN");
-                donorService.updateDonator(userId, donatorId, updateValues);
-                response = new ResponseEntity<>("Modified to unknown", HttpStatusCode.valueOf(200));
+                Donor don = donorService.updateDonator(userId, donatorId, updateValues);
+                response = new ResponseEntity<>(don, HttpStatusCode.valueOf(200));
             } else {
-                donorService.deleteDonatorById(userId, donatorId);
-                response = new ResponseEntity<>("Successfully deleted", HttpStatusCode.valueOf(200));
+                Donor don =donorService.deleteDonatorById(userId, donatorId);
+                response = new ResponseEntity<>(don, HttpStatusCode.valueOf(200));
             }
         } catch (DonatorNotFoundException
                  | DonatorIdException
