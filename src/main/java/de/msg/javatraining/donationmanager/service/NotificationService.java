@@ -56,17 +56,7 @@ public class NotificationService {
         }
     }
 
-    //    @Scheduled(cron = "0 0 12 * * ?") // Every day at noon
-//    public void deleteOldNotifications() {
-//        Date thirtyDaysAgo = getThirtyDaysAgo();
-//        notificationRepository.deleteNotificationsBefore(thirtyDaysAgo);
-//    }
-//
-//    private Date getThirtyDaysAgo() {
-//        Calendar cal = Calendar.getInstance();
-//        cal.add(Calendar.DAY_OF_MONTH, -30);
-//        return cal.getTime();
-//    }
+
     @Scheduled(cron = "0 */1 * * * ?")  // Every minute for testing
     public void deleteRecentNotifications() {
         Date fewMinutesAgo = getFewMinutesAgo();
@@ -87,7 +77,6 @@ public class NotificationService {
             // No need to log a fetch operation, but you can if you want.
             return notifications;
         } catch (Exception e) {
-//            logService.logOperation("ERROR", "Error fetching notifications not appeared for user: " + userId + ". " + e.getMessage(), null);
             throw e; // Re-throwing the exception after logging it.
         }
     }
@@ -98,7 +87,6 @@ public class NotificationService {
             // No need to log a fetch operation, but you can if you want.
             return notifications;
         } catch (Exception e) {
-//            logService.logOperation("ERROR", "Error fetching all notifications for user: " + userId + ". " + e.getMessage(), null);
             throw e; // Re-throwing the exception after logging it.
         }
     }

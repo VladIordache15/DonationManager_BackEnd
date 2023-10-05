@@ -43,6 +43,7 @@ public class UserController {
         ResponseEntity<?> response;
         try {
             userService.createUser(user);
+            System.out.println("succes");
             response = new ResponseEntity<>(user, HttpStatusCode.valueOf(200));
         } catch (UserException exception) {
             response = new ResponseEntity<>(exception, HttpStatusCode.valueOf(200));
