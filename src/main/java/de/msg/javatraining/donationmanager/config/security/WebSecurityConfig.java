@@ -25,7 +25,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig {
+public class WebSecurityConfig{
 
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -45,7 +45,7 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers(new MvcRequestMatcher(introspector,"/auth/login")).permitAll() //these requests are allowed
+                .authorizeHttpRequests(request -> request.requestMatchers(new MvcRequestMatcher(introspector,"/**")).permitAll() //these requests are allowed
                 .anyRequest().authenticated()) //any other request must be authenticated
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS)) // we don't want sessions
                 .authenticationProvider(authenticationProvider()).addFilterBefore(

@@ -25,14 +25,13 @@ public class NotificationService {
     private LogService logService;
 
     public void saveNotification(User user, List<NotificationParameter> parameters, NotificationType type) {
-        try {
             Notification notification = new Notification(type, new Date(), user, parameters);
             notificationRepository.save(notification);
-//            logService.logOperation("INSERT", "Saved notification for user: " + user.getId(), null);
-        } catch (Exception e) {
-//            logService.logOperation("ERROR", "Error saving notification for user: " + user.getId() + ". " + e.getMessage(), null);
-        }
+
+
     }
+
+
 
     public void markNotificationAsRead(Long notificationId) {
         try {
@@ -82,12 +81,9 @@ public class NotificationService {
     }
 
     public List<Notification> getAllNotifications(Long userId) {
-        try {
-            List<Notification> notifications = notificationRepository.getAllNotifications(userId);
+
             // No need to log a fetch operation, but you can if you want.
-            return notifications;
-        } catch (Exception e) {
-            throw e; // Re-throwing the exception after logging it.
-        }
+            return notificationRepository.getAllNotifications(userId);
+
     }
 }
