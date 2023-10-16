@@ -2,39 +2,48 @@ package de.msg.javatraining.donationmanager.controller.notification;
 
 import de.msg.javatraining.donationmanager.controller.test.Greeting;
 import de.msg.javatraining.donationmanager.controller.test.HelloMessage;
+import de.msg.javatraining.donationmanager.persistence.model.user.User;
 import de.msg.javatraining.donationmanager.persistence.notificationSystem.Notification;
 import de.msg.javatraining.donationmanager.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/socket")
+//@RequestMapping("/socket")
 
 public class WebSocketNotificationController {
     @Autowired
     NotificationService notificationService;
 
-//    @Autowired
-//    private SimpMessagingTemplate simpMessagingTemplate;
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
 
-    @GetMapping("/notify/{userId}")
-    public List<Notification> publishWebSocket(@PathVariable Long userId){
-
-        List<Notification> notifications = notificationService.getNotificationsNotAppearedOnView(userId);
-        notifications.stream()
-                .map(Notification::getId)
-                .forEach(id -> notificationService.markNotificationAsAppeared(id));
-
-        return notifications;
-    }
+//    @MessageMapping("/notification.publish")
+//    @SendTo("/topic/public")
+//    public void publishWebSocket(@Payload Map<String, Long> payload){
+//        Long userId = payload.get("userId");
+//
+//        List<Notification> notifications = notificationService.getNotificationsNotAppearedOnView(userId);
+//        notifications.stream()
+//                .map(Notification::getId)
+//                .forEach(id -> notificationService.markNotificationAsAppeared(id));
+//
+//        List<NotificationDTO> listaDTO = NotificationConverter.convertToDTOs(notifications);
+//        simpMessagingTemplate.convertAndSend("/topic/data.publish", listaDTO);
+//
+//
+//    }
 
     @PutMapping("/notifications/{id}")
     public ResponseEntity<Void> markNotificationAsRead(@PathVariable Long id) {
@@ -42,12 +51,18 @@ public class WebSocketNotificationController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/inbox/{userId}")
-    public List<Notification> getAllNotifications(@PathVariable Long userId){
+
+
+    @MessageMapping("/notification.all")
+    @SendTo("/topic/public")
+    public void getAllNotifications(@Payload Map<String, Long> payload){
+
+        Long userId = payload.get("userId");
 
         List<Notification> notifications = notificationService.getAllNotifications(userId);
-//        simpMessagingTemplate.convertAndSend("/topic/data.response", notifications);    //le trimitem direct la frontend
-        return notifications;
+        List<NotificationDTO> listaDTO = NotificationConverter.convertToDTOs(notifications);
+        simpMessagingTemplate.convertAndSend("/topic/data.response", listaDTO);
+//        return NotificationConverter.convertToDTOs(notifications);
 
 
     }

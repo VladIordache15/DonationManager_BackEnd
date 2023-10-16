@@ -5,6 +5,7 @@ import de.msg.javatraining.donationmanager.persistence.notificationSystem.Notifi
 import de.msg.javatraining.donationmanager.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
@@ -23,6 +24,7 @@ public class BotificationWebSocketHandler extends TextWebSocketHandler {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
 
+    @Scheduled(fixedDelay = 2000)
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 
@@ -50,18 +52,18 @@ public class BotificationWebSocketHandler extends TextWebSocketHandler {
 
         // Now 'id' contains the value from the 'id' parameter in the URL
         System.out.println("Received 'id' from WebSocket URL: " + id);
-        List<Notification> notifications = notificationService.getAllNotifications(id);
-
-        List<NotificationDTO> dtos = NotificationConverter.convertToDTOs(notifications);
-
-        for(NotificationDTO not: dtos) {
-
-            TextMessage message = new TextMessage(objectMapper.writeValueAsString(not));
-            session.sendMessage(message);
-
-
-        }
-        sessions.add(session);
+//        List<Notification> notifications = notificationService.getAllNotifications(id);
+//
+//        List<NotificationDTO> dtos = NotificationConverter.convertToDTOs(notifications);
+//
+//        for(NotificationDTO not: dtos) {
+//
+//            TextMessage message = new TextMessage(objectMapper.writeValueAsString(not));
+//            session.sendMessage(message);
+//
+//
+//        }
+//        sessions.add(session);
     }
 
 }

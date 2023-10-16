@@ -1,5 +1,7 @@
 package de.msg.javatraining.donationmanager.service;
 
+import de.msg.javatraining.donationmanager.controller.notification.NotificationConverter;
+import de.msg.javatraining.donationmanager.controller.notification.NotificationDTO;
 import de.msg.javatraining.donationmanager.persistence.model.user.User;
 import de.msg.javatraining.donationmanager.persistence.notificationSystem.Notification;
 import de.msg.javatraining.donationmanager.persistence.notificationSystem.NotificationParameter;
@@ -7,6 +9,7 @@ import de.msg.javatraining.donationmanager.persistence.notificationSystem.Notifi
 import de.msg.javatraining.donationmanager.persistence.repository.NotificationRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +26,25 @@ public class NotificationService {
 
     @Autowired
     private LogService logService;
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
+
+
 
     public void saveNotification(User user, List<NotificationParameter> parameters, NotificationType type) {
             Notification notification = new Notification(type, new Date(), user, parameters);
             notificationRepository.save(notification);
+         List<NotificationDTO> listaDTO = NotificationConverter.convertToDTOs(notificationRepository.getAllNotifications(user.getId()));
+        simpMessagingTemplate.convertAndSend("/topic/data.response", listaDTO);
+
+        List<Notification> notifications = this.getNotificationsNotAppearedOnView(user.getId());
+        notifications.stream()
+                .map(Notification::getId)
+                .forEach(this::markNotificationAsAppeared);
+        List<NotificationDTO> listaDTO2 = NotificationConverter.convertToDTOs(notifications);
+
+        simpMessagingTemplate.convertAndSend("/topic/data.publish", listaDTO2);
+
 
 
     }
@@ -73,6 +91,7 @@ public class NotificationService {
     public List<Notification> getNotificationsNotAppearedOnView(Long userId) {
         try {
             List<Notification> notifications = notificationRepository.getNotificationsNotAppearedOnView(userId);
+            System.out.println(notifications);
             // No need to log a fetch operation, but you can if you want.
             return notifications;
         } catch (Exception e) {
@@ -82,7 +101,7 @@ public class NotificationService {
 
     public List<Notification> getAllNotifications(Long userId) {
 
-            // No need to log a fetch operation, but you can if you want.
+            // No need to log a fetch operation, but you can if you want
             return notificationRepository.getAllNotifications(userId);
 
     }
