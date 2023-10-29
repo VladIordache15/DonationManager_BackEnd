@@ -1,19 +1,19 @@
 package donationTests;
 
-import de.msg.javatraining.donationmanager.controller.donation.DonationController;
-import de.msg.javatraining.donationmanager.exceptions.donation.*;
-import de.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
-import de.msg.javatraining.donationmanager.persistence.campaignModel.Campaign;
-import de.msg.javatraining.donationmanager.persistence.donationModel.Donation;
-import de.msg.javatraining.donationmanager.persistence.donorModel.Donor;
-import de.msg.javatraining.donationmanager.persistence.model.ERole;
-import de.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
-import de.msg.javatraining.donationmanager.persistence.model.Role;
-import de.msg.javatraining.donationmanager.persistence.model.user.User;
-import de.msg.javatraining.donationmanager.service.campaignService.CampaignService;
-import de.msg.javatraining.donationmanager.service.donationService.DonationService;
-import de.msg.javatraining.donationmanager.service.donorService.DonorService;
-import de.msg.javatraining.donationmanager.service.userService.UserService;
+import demo.msg.javatraining.donationmanager.controller.donation.DonationController;
+import demo.msg.javatraining.donationmanager.exceptions.donation.*;
+import demo.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
+import demo.msg.javatraining.donationmanager.persistence.campaignModel.Campaign;
+import demo.msg.javatraining.donationmanager.persistence.donationModel.Donation;
+import demo.msg.javatraining.donationmanager.persistence.donorModel.Donor;
+import demo.msg.javatraining.donationmanager.persistence.model.ERole;
+import demo.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
+import demo.msg.javatraining.donationmanager.persistence.model.Role;
+import demo.msg.javatraining.donationmanager.persistence.model.user.User;
+import demo.msg.javatraining.donationmanager.service.campaignService.CampaignService;
+import demo.msg.javatraining.donationmanager.service.donationService.DonationService;
+import demo.msg.javatraining.donationmanager.service.donorService.DonorService;
+import demo.msg.javatraining.donationmanager.service.userService.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -26,7 +26,6 @@ import java.time.LocalDate;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 

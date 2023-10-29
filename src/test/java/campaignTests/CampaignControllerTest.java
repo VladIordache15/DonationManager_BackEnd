@@ -1,16 +1,16 @@
 package campaignTests;
 
-import de.msg.javatraining.donationmanager.controller.campaign.CampaignController;
-import de.msg.javatraining.donationmanager.exceptions.campaign.CampaignIdException;
-import de.msg.javatraining.donationmanager.exceptions.campaign.CampaignNameException;
-import de.msg.javatraining.donationmanager.exceptions.campaign.CampaignNotFoundException;
-import de.msg.javatraining.donationmanager.exceptions.campaign.CampaignRequirementsException;
-import de.msg.javatraining.donationmanager.exceptions.user.UserIdException;
-import de.msg.javatraining.donationmanager.exceptions.user.UserNotFoundException;
-import de.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
-import de.msg.javatraining.donationmanager.persistence.campaignModel.Campaign;
-import de.msg.javatraining.donationmanager.service.campaignService.CampaignService;
-import de.msg.javatraining.donationmanager.service.donationService.DonationService;
+import demo.msg.javatraining.donationmanager.controller.campaign.CampaignController;
+import demo.msg.javatraining.donationmanager.exceptions.campaign.CampaignIdException;
+import demo.msg.javatraining.donationmanager.exceptions.campaign.CampaignNameException;
+import demo.msg.javatraining.donationmanager.exceptions.campaign.CampaignNotFoundException;
+import demo.msg.javatraining.donationmanager.exceptions.campaign.CampaignRequirementsException;
+import demo.msg.javatraining.donationmanager.exceptions.user.UserIdException;
+import demo.msg.javatraining.donationmanager.exceptions.user.UserNotFoundException;
+import demo.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
+import demo.msg.javatraining.donationmanager.persistence.campaignModel.Campaign;
+import demo.msg.javatraining.donationmanager.service.campaignService.CampaignService;
+import demo.msg.javatraining.donationmanager.service.donationService.DonationService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

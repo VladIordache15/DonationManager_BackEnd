@@ -1,30 +1,25 @@
 package campaignTests;
 
-import de.msg.javatraining.donationmanager.exceptions.campaign.CampaignNameException;
-import de.msg.javatraining.donationmanager.exceptions.campaign.CampaignNotFoundException;
-import de.msg.javatraining.donationmanager.exceptions.campaign.CampaignRequirementsException;
-import de.msg.javatraining.donationmanager.exceptions.user.UserNotFoundException;
-import de.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
-import de.msg.javatraining.donationmanager.persistence.campaignModel.Campaign;
-import de.msg.javatraining.donationmanager.persistence.model.ERole;
-import de.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
-import de.msg.javatraining.donationmanager.persistence.model.Role;
-import de.msg.javatraining.donationmanager.persistence.model.user.User;
-import de.msg.javatraining.donationmanager.persistence.repository.CampaignRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.RoleRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.UserRepository;
-import de.msg.javatraining.donationmanager.service.LogService;
-import de.msg.javatraining.donationmanager.service.campaignService.CampaignService;
-import org.junit.jupiter.api.BeforeEach;
+import demo.msg.javatraining.donationmanager.exceptions.campaign.CampaignNameException;
+import demo.msg.javatraining.donationmanager.exceptions.campaign.CampaignNotFoundException;
+import demo.msg.javatraining.donationmanager.exceptions.campaign.CampaignRequirementsException;
+import demo.msg.javatraining.donationmanager.exceptions.user.UserNotFoundException;
+import demo.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
+import demo.msg.javatraining.donationmanager.persistence.campaignModel.Campaign;
+import demo.msg.javatraining.donationmanager.persistence.model.ERole;
+import demo.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
+import demo.msg.javatraining.donationmanager.persistence.model.Role;
+import demo.msg.javatraining.donationmanager.persistence.model.user.User;
+import demo.msg.javatraining.donationmanager.persistence.repository.CampaignRepository;
+import demo.msg.javatraining.donationmanager.persistence.repository.UserRepository;
+import demo.msg.javatraining.donationmanager.service.LogService;
+import demo.msg.javatraining.donationmanager.service.campaignService.CampaignService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.stubbing.OngoingStubbing;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -33,9 +28,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
-import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 @ExtendWith(MockitoExtension.class)
 public class CampaignServiceTest {

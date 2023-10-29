@@ -1,15 +1,14 @@
 package tests;
 
-import de.msg.javatraining.donationmanager.exceptions.permission.PermissionException;
-import de.msg.javatraining.donationmanager.persistence.model.ERole;
-import de.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
-import de.msg.javatraining.donationmanager.persistence.model.Role;
-import de.msg.javatraining.donationmanager.persistence.model.user.User;
-import de.msg.javatraining.donationmanager.persistence.repository.RoleRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.UserRepository;
-import de.msg.javatraining.donationmanager.service.LogService;
-import de.msg.javatraining.donationmanager.service.permissionService.PermissionService;
-import org.hibernate.ObjectNotFoundException;
+import demo.msg.javatraining.donationmanager.exceptions.permission.PermissionException;
+import demo.msg.javatraining.donationmanager.persistence.model.ERole;
+import demo.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
+import demo.msg.javatraining.donationmanager.persistence.model.Role;
+import demo.msg.javatraining.donationmanager.persistence.model.user.User;
+import demo.msg.javatraining.donationmanager.persistence.repository.RoleRepository;
+import demo.msg.javatraining.donationmanager.persistence.repository.UserRepository;
+import demo.msg.javatraining.donationmanager.service.LogService;
+import demo.msg.javatraining.donationmanager.service.permissionService.PermissionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -2,9 +2,9 @@ package tests;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import de.msg.javatraining.donationmanager.exceptions.permission.PermissionException;
-import de.msg.javatraining.donationmanager.persistence.model.ERole;
-import de.msg.javatraining.donationmanager.service.LogService;
+import demo.msg.javatraining.donationmanager.exceptions.permission.PermissionException;
+import demo.msg.javatraining.donationmanager.persistence.model.ERole;
+import demo.msg.javatraining.donationmanager.service.LogService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,10 +12,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import de.msg.javatraining.donationmanager.controller.permission.PermissionController;
-import de.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
-import de.msg.javatraining.donationmanager.persistence.model.Role;
-import de.msg.javatraining.donationmanager.service.permissionService.PermissionService;
+import demo.msg.javatraining.donationmanager.controller.permission.PermissionController;
+import demo.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
+import demo.msg.javatraining.donationmanager.persistence.model.Role;
+import demo.msg.javatraining.donationmanager.service.permissionService.PermissionService;
 
 import java.util.HashSet;
 

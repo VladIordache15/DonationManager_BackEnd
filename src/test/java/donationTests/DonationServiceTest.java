@@ -1,25 +1,24 @@
 package donationTests;
 
-import de.msg.javatraining.donationmanager.exceptions.donation.*;
-import de.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
-import de.msg.javatraining.donationmanager.persistence.campaignModel.Campaign;
-import de.msg.javatraining.donationmanager.persistence.donationModel.Donation;
-import de.msg.javatraining.donationmanager.persistence.donorModel.Donor;
-import de.msg.javatraining.donationmanager.persistence.model.ERole;
-import de.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
-import de.msg.javatraining.donationmanager.persistence.model.Role;
-import de.msg.javatraining.donationmanager.persistence.model.user.User;
-import de.msg.javatraining.donationmanager.persistence.repository.CampaignRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.DonationRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.DonorRepository;
-import de.msg.javatraining.donationmanager.persistence.repository.UserRepository;
-import de.msg.javatraining.donationmanager.service.LogService;
-import de.msg.javatraining.donationmanager.service.donationService.DonationService;
+import demo.msg.javatraining.donationmanager.exceptions.donation.*;
+import demo.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
+import demo.msg.javatraining.donationmanager.persistence.campaignModel.Campaign;
+import demo.msg.javatraining.donationmanager.persistence.donationModel.Donation;
+import demo.msg.javatraining.donationmanager.persistence.donorModel.Donor;
+import demo.msg.javatraining.donationmanager.persistence.model.ERole;
+import demo.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
+import demo.msg.javatraining.donationmanager.persistence.model.Role;
+import demo.msg.javatraining.donationmanager.persistence.model.user.User;
+import demo.msg.javatraining.donationmanager.persistence.repository.CampaignRepository;
+import demo.msg.javatraining.donationmanager.persistence.repository.DonationRepository;
+import demo.msg.javatraining.donationmanager.persistence.repository.DonorRepository;
+import demo.msg.javatraining.donationmanager.persistence.repository.UserRepository;
+import demo.msg.javatraining.donationmanager.service.LogService;
+import demo.msg.javatraining.donationmanager.service.donationService.DonationService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.MockitoAnnotations;
 

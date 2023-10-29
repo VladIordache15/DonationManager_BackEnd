@@ -1,20 +1,17 @@
 package donatorTests;
 
-import de.msg.javatraining.donationmanager.controller.donor.DonorController;
-import de.msg.javatraining.donationmanager.exceptions.donation.DonationIdException;
-import de.msg.javatraining.donationmanager.exceptions.donation.DonationNotFoundException;
-import de.msg.javatraining.donationmanager.exceptions.donation.DonationRequirementsException;
-import de.msg.javatraining.donationmanager.exceptions.donator.DonatorIdException;
-import de.msg.javatraining.donationmanager.exceptions.donator.DonatorNotFoundException;
-import de.msg.javatraining.donationmanager.exceptions.donator.DonatorRequirementsException;
-import de.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
-import de.msg.javatraining.donationmanager.persistence.donorModel.Donor;
-import de.msg.javatraining.donationmanager.persistence.model.ERole;
-import de.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
-import de.msg.javatraining.donationmanager.persistence.model.Role;
-import de.msg.javatraining.donationmanager.persistence.model.user.User;
-import de.msg.javatraining.donationmanager.service.donationService.DonationService;
-import de.msg.javatraining.donationmanager.service.donorService.DonorService;
+import demo.msg.javatraining.donationmanager.controller.donor.DonorController;
+import demo.msg.javatraining.donationmanager.exceptions.donator.DonatorIdException;
+import demo.msg.javatraining.donationmanager.exceptions.donator.DonatorNotFoundException;
+import demo.msg.javatraining.donationmanager.exceptions.donator.DonatorRequirementsException;
+import demo.msg.javatraining.donationmanager.exceptions.user.UserPermissionException;
+import demo.msg.javatraining.donationmanager.persistence.donorModel.Donor;
+import demo.msg.javatraining.donationmanager.persistence.model.ERole;
+import demo.msg.javatraining.donationmanager.persistence.model.PermissionEnum;
+import demo.msg.javatraining.donationmanager.persistence.model.Role;
+import demo.msg.javatraining.donationmanager.persistence.model.user.User;
+import demo.msg.javatraining.donationmanager.service.donationService.DonationService;
+import demo.msg.javatraining.donationmanager.service.donorService.DonorService;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +25,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
